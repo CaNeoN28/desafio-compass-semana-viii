@@ -1,38 +1,47 @@
 import mongoose from "mongoose";
+import bcrypt from "bcrypt";
 
 const TutorSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    trim: true
+    trim: true,
   },
   password: {
     type: String,
     select: false,
-    required: true
+    required: true,
   },
   phone: {
     type: String,
-    required: true
+    required: true,
   },
   email: {
-    type:String,
+    type: String,
     unique: true,
-    trim: true
+    trim: true,
   },
   date_of_birth: {
-    type:Date,
-    required: true
+    type: Date,
+    required: true,
   },
   zip_code: {
     type: String,
-    required: true
+    required: true,
   },
   pets: {
     type: [mongoose.Types.ObjectId],
-    ref: 'pet',
-    default: []
-  }
+    ref: "pet",
+    default: [],
+  },
 });
 
-export default mongoose.model('tutor', TutorSchema)
+TutorSchema.pre("save", async function () {
+  if (!this.isModified("password")) return;
+
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
+});
+
+const UserModel = mongoose.model("tutor", TutorSchema)
+export default UserModel
