@@ -3,6 +3,7 @@ import ValidationError from "../errors/ValidationError";
 import TutorModel from "../models/Tutor.model";
 import UserRepository from "../repositories/tutor.repository";
 import ITutor from "../types/ITutor";
+import { password_match } from "../types/Matches";
 
 class CreateUser {
   static handle = async function (data: ITutor) {
@@ -42,7 +43,7 @@ class CreateUser {
     else {
       const password = data.password;
 
-      if (!password.match(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[A-Za-z\d]{8,}$/))
+      if (!password.match(password_match))
         validationErrors.push(
           "The password should contain at least 8 characters, a number, an uppercase letter and a lowercase letter"
         );

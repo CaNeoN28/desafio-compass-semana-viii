@@ -3,6 +3,7 @@ import * as dotenv from "dotenv";
 import connectToDB from "./src/config/db.config";
 import TutorControler from "./src/controllers/tutor.controller";
 import errorsMiddleware from "./src/middlewares/errorsMidlleware";
+import AuthController from "./src/controllers/auth.controller";
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ const tutorController = new TutorControler();
 app.use(express.json());
 
 app.route("/tutor").post(tutorController.post);
+app.post("/auth/login", AuthController.login)
 
 app.use(errorsMiddleware);
 
