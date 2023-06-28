@@ -12,10 +12,15 @@ app.get("/", (req, res) => {
 });
 
 const start = async () => {
-  await connectToDB()
-  app.listen(PORT, () => {
-    console.log("Server listening at http://localhost:3000");
-  });
-}
+  try {
+    await connectToDB();
+    app.listen(PORT, () => {
+      console.log("Server listening at http://localhost:3000");
+    });
+  } catch (err) {
+    console.log("Something went wrong")
+    console.log(err)
+  }
+};
 
-start()
+start();
