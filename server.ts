@@ -1,15 +1,19 @@
 import express from "express";
 import * as dotenv from "dotenv";
 import connectToDB from "./src/config/db.config";
+import TutorControler from "./src/controllers/user.controller";
 
 dotenv.config();
 
 const app = express();
 const { PORT = 3000 } = process.env;
 
-app.get("/", (req, res) => {
-  res.send("Hello world");
-});
+const tutorController = new TutorControler
+
+app.use(express.json())
+
+app.route('/tutor')
+  .post(tutorController.post)
 
 const start = async () => {
   try {
