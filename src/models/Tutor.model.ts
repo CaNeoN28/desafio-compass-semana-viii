@@ -43,5 +43,5 @@ TutorSchema.pre("save", async function () {
   this.password = await bcrypt.hash(this.password, salt);
 });
 
-const UserModel = mongoose.model("tutor", TutorSchema)
-export default UserModel
+const TutorModel = mongoose.model("tutor", TutorSchema)
+export default TutorModel
