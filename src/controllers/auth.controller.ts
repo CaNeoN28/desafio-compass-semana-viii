@@ -6,10 +6,11 @@ class AuthController {
   static login: RequestHandler = async function (req, res, next) {
     const { email, password } = req.body;
     try {
-      await AuthLoginService.handle({ email, password });
+      const token = await AuthLoginService.handle({ email, password });
 
       res.status(StatusCodes.OK).send({
-        message: "Logged with sucess!"
+        message: "Logged with sucess!",
+        token
       })
     } catch (err) {
       next(err);
