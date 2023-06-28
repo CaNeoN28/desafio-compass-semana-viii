@@ -1,8 +1,9 @@
 import { RequestHandler } from "express";
 import ITutor from "../types/ITutor";
+import CreateUser from "../services/create.tutor.service";
 
 class TutorControler {
-  post: RequestHandler = async function (req, res) {
+  post: RequestHandler = async function (req, res, next) {
     const {
       name,
       date_of_birth,
@@ -23,7 +24,13 @@ class TutorControler {
       zip_code,
     };
 
-    res.send(tutorData);
+    try {
+      await CreateUser.handle(tutorData);
+
+      res.send(tutorData);
+    } catch (err) {
+      next(err);
+    }
   };
 }
 
