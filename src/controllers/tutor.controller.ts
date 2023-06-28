@@ -1,6 +1,7 @@
 import { RequestHandler } from "express";
 import ITutor from "../types/ITutor";
 import CreateUser from "../services/create.tutor.service";
+import { StatusCodes } from "http-status-codes";
 
 class TutorControler {
   post: RequestHandler = async function (req, res, next) {
@@ -27,7 +28,7 @@ class TutorControler {
     try {
       const data = await CreateUser.handle(tutorData);
 
-      res.send(data);
+      res.status(StatusCodes.CREATED).send(data);
     } catch (err) {
       next(err);
     }
