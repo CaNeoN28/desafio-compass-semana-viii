@@ -17,7 +17,10 @@ export default class JwtUtils {
         email,
         id,
       },
-      process.env.JWT_SECRET || "secret"
+      process.env.JWT_SECRET || "secret",
+      {
+        expiresIn: "1h"
+      }
     );
 
     return token;

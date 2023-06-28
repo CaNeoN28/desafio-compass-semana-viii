@@ -7,11 +7,11 @@ class AuthController {
     const { email, password } = req.body;
     try {
       const token = await AuthLoginService.handle({ email, password });
-
+      
       res.status(StatusCodes.OK).send({
         message: "Logged with sucess!",
-        token
-      })
+        token,
+      });
     } catch (err) {
       next(err);
     }
