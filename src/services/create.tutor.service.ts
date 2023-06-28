@@ -1,6 +1,7 @@
 import UniqueFieldError from "../errors/UniqueFieldError";
 import ValidationError from "../errors/ValidationError";
 import TutorModel from "../models/Tutor.model";
+import UserRepository from "../repositories/tutor.repository";
 import ITutor from "../types/ITutor";
 
 class CreateUser {
@@ -85,7 +86,9 @@ class CreateUser {
       throw new UniqueFieldError(message, data);
     }
 
-    return validatedData;
+    const tutor = UserRepository.create(validatedData)
+
+    return tutor
   };
 }
 

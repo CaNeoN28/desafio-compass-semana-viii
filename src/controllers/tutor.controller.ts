@@ -25,9 +25,9 @@ class TutorControler {
     };
 
     try {
-      await CreateUser.handle(tutorData);
+      const data = await CreateUser.handle(tutorData);
 
-      res.send(tutorData);
+      res.send(data);
     } catch (err) {
       next(err);
     }
