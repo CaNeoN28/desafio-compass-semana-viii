@@ -6,10 +6,10 @@ class UnauthorizedError implements IError {
   message: string;
   data: any;
 
-  constructor(message: string, data: any){
+  constructor(message: string){
     this.status = StatusCodes.UNAUTHORIZED
     this.message = message
-    this.data = data
+    this.data = null
   }
 }
 

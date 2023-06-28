@@ -9,7 +9,6 @@ const TutorSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    select: false,
     required: true,
   },
   phone: {
