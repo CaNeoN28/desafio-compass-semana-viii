@@ -18,6 +18,7 @@ const TutorSchema = new mongoose.Schema({
   email: {
     type: String,
     unique: true,
+    required: true,
     trim: true,
   },
   date_of_birth: {
@@ -42,5 +43,5 @@ TutorSchema.pre("save", async function () {
   this.password = await bcrypt.hash(this.password, salt);
 });
 
-const TutorModel = mongoose.model("tutor", TutorSchema)
-export default TutorModel
+const TutorModel = mongoose.model("tutor", TutorSchema);
+export default TutorModel;
