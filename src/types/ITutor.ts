@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
 
 export default interface ITutor {
-  name: String;
-  password: String;
-  phone: String;
-  email: String;
-  date_of_birth: String;
-  zip_code: String;
+  name: string;
+  password: string;
+  phone: string;
+  email: string;
+  date_of_birth: string;
+  zip_code: string;
   pets: mongoose.Types.ObjectId[];
 }
