@@ -1,7 +1,7 @@
 import {Schema} from "swagger-jsdoc";
 
 const Tutor: Schema = {
-	type: "Object",
+	type: "object",
 	properties: {
 
 	}

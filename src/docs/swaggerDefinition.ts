@@ -1,5 +1,6 @@
 import { OAS3Definition } from "swagger-jsdoc";
 import components from "./components/components";
+import paths from "./paths";
 
 const swaggerDefinition: OAS3Definition = {
 	openapi: "3.0.0",
@@ -11,7 +12,8 @@ const swaggerDefinition: OAS3Definition = {
 		url: "http://localhost:3000/api/v1",
 		description: "Development Environment"
 	}],
-	components: components
+	paths,
+	components
 };
 
 export default swaggerDefinition
