@@ -8,7 +8,7 @@ const Tutors: PathItem = {
 			content: {
 				"application/json": {
 					schema: {
-						$ref: "#/components/schemas/Tutor",
+						$ref: "#/components/schemas/TutorPost",
 					},
 				},
 			},
@@ -19,7 +19,7 @@ const Tutors: PathItem = {
 				content: {
 					"application/json": {
 						schema: {
-							$ref: "#/components/schemas/Tutor",
+							$ref: "#/components/schemas/TutorResponse",
 						},
 					},
 				},

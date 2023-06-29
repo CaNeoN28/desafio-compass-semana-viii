@@ -1,13 +1,6 @@
-import { Schema } from "swagger-jsdoc";
-
-const Tutor: Schema = {
-	type: "object",
+const BaseTutor = {
 	properties: {
 		name: {
-			type: "string",
-			required: true,
-		},
-		password: {
 			type: "string",
 			required: true,
 		},
@@ -28,13 +21,13 @@ const Tutor: Schema = {
 			type: "string",
 			required: true,
 		},
-		pets:{
+		pets: {
 			type: "array",
 			items: {
-				$ref: "#/components/schemas/pet"
-			}
-		}
-	},
-};
+				$ref: "#/components/schemas/pet",
+			},
+		},
+	}
+}
 
-export default Tutor;
+export default BaseTutor
