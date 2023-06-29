@@ -16,8 +16,6 @@ const tutorController = new TutorControler();
 app.use(express.json());
 app.use("/api/v1", appRouter);
 
-app.post("/auth/login", AuthController.login);
-
 app.use(errorsMiddleware);
 
 const start = async () => {
