@@ -1,4 +1,5 @@
 import { PathItem } from "swagger-jsdoc";
+import BaseTutor from "../components/schemas/Tutor/BaseTutor";
 
 const Tutors: PathItem = {
 	post: {
@@ -20,6 +21,23 @@ const Tutors: PathItem = {
 					"application/json": {
 						schema: {
 							$ref: "#/components/schemas/TutorResponse",
+						},
+					},
+				},
+			},
+			409: {
+				description: "Conflict",
+				content: {
+					"application/json": {
+						schema: {
+							type: "object",
+							properties: {
+								message: {
+									type: "string",
+									example: "Email already in use",
+								},
+								data: BaseTutor,
+							},
 						},
 					},
 				},
