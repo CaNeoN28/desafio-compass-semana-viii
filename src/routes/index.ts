@@ -4,7 +4,7 @@ import authRouter from "./auth.routes";
 
 const appRouter = express.Router();
 
-appRouter.use("/tutors/", tutorRouter);
+appRouter.use("/tutors", tutorRouter);
 appRouter.use("/auth", authRouter)
 
 appRouter.use("/", (req, res) => {

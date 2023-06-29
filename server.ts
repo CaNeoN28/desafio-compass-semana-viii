@@ -11,8 +11,6 @@ dotenv.config();
 const app = express();
 const { PORT = 3000 } = process.env;
 
-const tutorController = new TutorControler();
-
 app.use(express.json());
 app.use("/api/v1", appRouter);
 
