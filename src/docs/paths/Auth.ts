@@ -35,6 +35,26 @@ class Auth {
 						},
 					},
 				},
+				401: {
+					description: "Unauthorized",
+					content: {
+						"application/json": {
+							schema: {
+								type: "object",
+								properties: {
+									message: {
+										type: "string",
+										example: "Invalid credentials, please try again"
+									},
+									data: {
+										type: "object",
+										properties: {}
+									}
+								}
+							}
+						}
+					}
+				}
 			},
 		},
 	};
