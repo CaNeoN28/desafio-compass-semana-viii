@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import BaseTutor from "./BaseTutor";
 
 const TutorResponse = {
@@ -8,6 +9,10 @@ const TutorResponse = {
 		},
 		...BaseTutor.properties,
 	},
+	example: {
+		...BaseTutor.example,
+		_id: new mongoose.Types.ObjectId()
+	}
 };
 
 export default TutorResponse;

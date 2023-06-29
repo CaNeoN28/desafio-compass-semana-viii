@@ -10,6 +10,10 @@ const TutorPost: Schema = {
 			required: true,
 		},
 	},
+	example: {
+		...BaseTutor.example,
+		password: "12345678Asdf"
+	}
 };
 
 export default TutorPost;
