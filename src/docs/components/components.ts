@@ -1,10 +1,16 @@
-import {Components} from "swagger-jsdoc";
-import {Tutor} from "./schemas";
+import { Components } from "swagger-jsdoc";
+import { TutorPost, TutorResponse, Login } from "./schemas";
+import { bearerAuth } from "./securitySchemes";
 
 const components: Components = {
 	schemas: {
-		Tutor
-	}
-}
+		TutorPost,
+		TutorResponse,
+		Login,
+	},
+	securitySchemes: {
+		bearerAuth,
+	},
+};
 
-export default components
+export default components;

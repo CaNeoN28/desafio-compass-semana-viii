@@ -1,4 +1,5 @@
 import { PathItem } from "swagger-jsdoc";
+import BaseTutor from "../components/schemas/Tutor/BaseTutor";
 
 const Tutors: PathItem = {
 	post: {
@@ -8,18 +9,51 @@ const Tutors: PathItem = {
 			content: {
 				"application/json": {
 					schema: {
-						$ref: "#/components/schemas/Tutor",
+						$ref: "#/components/schemas/TutorPost",
 					},
 				},
 			},
 		},
 		responses: {
-			200: {
-				description: "OK",
+			201: {
+				description: "Created",
 				content: {
 					"application/json": {
 						schema: {
-							$ref: "#/components/schemas/Tutor",
+							$ref: "#/components/schemas/TutorResponse",
+						},
+					},
+				},
+			},
+			400: {
+				description: "Bad request",
+				content: {
+					"application/json": {
+						schema:{
+							type: "object",
+							properties: {
+								message: {
+									type: "string"
+								},
+								data: BaseTutor
+							}
+						}
+					}
+				}
+			},
+			409: {
+				description: "Conflict",
+				content: {
+					"application/json": {
+						schema: {
+							type: "object",
+							properties: {
+								message: {
+									type: "string",
+									example: "Email already in use",
+								},
+								data: BaseTutor,
+							},
 						},
 					},
 				},

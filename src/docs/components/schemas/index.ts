@@ -1,5 +1,9 @@
-import Tutor from "./Tutor"
+import TutorPost from "./Tutor/TutorPost"
+import TutorResponse from "./Tutor/TutorResponse"
+import Login from "./Login"
 
 export {
-	Tutor
+	TutorPost,
+	TutorResponse,
+	Login
 }
