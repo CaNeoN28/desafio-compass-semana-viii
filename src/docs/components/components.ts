@@ -1,10 +1,11 @@
 import { Components } from "swagger-jsdoc";
-import { TutorPost, TutorResponse } from "./schemas";
+import { TutorPost, TutorResponse, Login } from "./schemas";
 
 const components: Components = {
 	schemas: {
 		TutorPost,
 		TutorResponse,
+		Login
 	},
 };
 
