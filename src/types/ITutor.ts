@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
 
 export default interface ITutor {
-  name: string;
+  _id?: string,
+	name: string;
   password: string;
   phone: string;
   email: string;
