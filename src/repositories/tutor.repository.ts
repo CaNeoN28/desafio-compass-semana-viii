@@ -15,6 +15,9 @@ class UserRepository {
 
     return response
   };
+	static list = async function () {
+		
+	}
 }
 
 export default UserRepository;
