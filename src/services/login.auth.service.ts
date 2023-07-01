@@ -32,9 +32,10 @@ class AuthLoginService {
       throw new UnauthenticatedError("Invalid credentials, please try again!");
 
     let token = JwtUtils.generateToken({
-      id: user!.id,
+      id: user.id,
       email: user.email,
       name: user.name,
+			role: user.role
     });
 
     return token;
