@@ -1,7 +1,7 @@
 import { StatusCodes } from "http-status-codes";
 import IError from "../types/IError";
 
-class UnauthorizedError implements IError {
+class UnauthenticatedError implements IError {
   status: number;
   message: string;
   data: any;
@@ -13,4 +13,4 @@ class UnauthorizedError implements IError {
   }
 }
 
-export default UnauthorizedError
+export default UnauthenticatedError
