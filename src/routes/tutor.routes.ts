@@ -7,4 +7,6 @@ const controller = new TutorControler();
 
 tutorRouter.route("/").post(controller.post).get(authMiddleware ,controller.get);
 
+tutorRouter.route("/:id").put(authMiddleware, controller.put)
+
 export default tutorRouter;
