@@ -1,6 +1,6 @@
 import TutorModel from "../models/Tutor.model";
 
-class UserRepository {
+class TutorRepository {
   static create = async function (data: any) {
     const tutor = new TutorModel(data)
 
@@ -16,8 +16,10 @@ class UserRepository {
     return response
   };
 	static list = async function () {
-		
+		const tutors = await TutorModel.find()
+
+		return tutors
 	}
 }
 
-export default UserRepository;
+export default TutorRepository;
