@@ -16,7 +16,7 @@ class TutorRepository {
     return response
   };
 	static list = async function () {
-		const tutors = await TutorModel.find()
+		const tutors = await TutorModel.find().select({password: false})
 
 		return tutors
 	}

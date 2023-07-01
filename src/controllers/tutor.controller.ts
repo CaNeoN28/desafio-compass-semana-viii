@@ -2,6 +2,7 @@ import { RequestHandler } from "express";
 import ITutor from "../types/ITutor";
 import CreateUser from "../services/create.tutor.service";
 import { StatusCodes } from "http-status-codes";
+import ListTutors from "../services/list.tutor.service";
 
 class TutorControler {
 	post: RequestHandler = async function (req, res, next) {
@@ -36,7 +37,11 @@ class TutorControler {
 
 	get: RequestHandler = async function (req, res, next) {
 		try {
-			
+			const tutors = await ListTutors.list()
+
+			res.status(StatusCodes.OK).send({
+				tutors
+			})
 		} catch (err) {
 			next(err);
 		}
