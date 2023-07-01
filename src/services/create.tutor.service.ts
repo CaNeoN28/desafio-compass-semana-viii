@@ -5,7 +5,7 @@ import TutorRepository from "../repositories/tutor.repository";
 import ITutor from "../types/ITutor";
 import { password_match } from "../types/Matches";
 
-class CreateUser {
+class CreateTutor {
   static handle = async function (data: ITutor) {
     const validatedData: any = {};
     const validationErrors = [];
@@ -93,4 +93,4 @@ class CreateUser {
   };
 }
 
-export default CreateUser;
+export default CreateTutor;
