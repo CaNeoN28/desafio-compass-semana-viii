@@ -1,9 +1,9 @@
 import { Paths } from "swagger-jsdoc";
-import Tutors from "./Tutors";
 import Auth from "./Auth";
+import TutorsPaths from "./Tutor";
 
 const paths: Paths = {
-	"/tutors": Tutors,
+	...TutorsPaths,
 	"/auth/login": Auth.Login
 };
 
