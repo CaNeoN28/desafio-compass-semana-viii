@@ -71,19 +71,34 @@ class TutorRepository {
 		return newTutor;
 	};
 
+	static addPet = async function (
+		tutorId: string,
+		petId: string
+	) {
+		const tutor = await TutorModel.findById(tutorId);
+
+		if (!tutor)
+			throw {
+				status: StatusCodes.NOT_FOUND,
+				message: "Tutor not found",
+			};
+
+		await tutor.updateOne({pets: [...tutor.pets, petId]})
+	};
+
 	static remove = async function (id: string) {
 		const tutor = await TutorModel.findById(id);
 
-		if(!tutor)
+		if (!tutor)
 			throw {
 				status: StatusCodes.NOT_FOUND,
-				message: "Tutor not found"
-			}
+				message: "Tutor not found",
+			};
 
-		if(tutor.pets.length > 0)
-			throw new UnauthorizedError("Can not delete tutor with pets")
+		if (tutor.pets.length > 0)
+			throw new UnauthorizedError("Can not delete tutor with pets");
 
-		await tutor?.deleteOne()
+		await tutor?.deleteOne();
 	};
 }
 

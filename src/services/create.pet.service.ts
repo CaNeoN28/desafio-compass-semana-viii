@@ -1,4 +1,5 @@
 import PetRepository from "../repositories/pet.repository"
+import TutorRepository from "../repositories/tutor.repository"
 import IPet from "../types/IPet"
 import Pet from "../types/Pet"
 
@@ -7,6 +8,8 @@ class CreatePet{
 		const pet = new Pet(data)
 
 		const response = await PetRepository.create(pet)
+
+		await TutorRepository.addPet(tutorId, response.id)
 
 		return response
 	}

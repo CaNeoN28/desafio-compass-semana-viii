@@ -7,7 +7,6 @@ class PetRepository{
 		const pet = await new PetModel(data)
 		
 		await pet.save()
-
 		return pet
 	}
 }
