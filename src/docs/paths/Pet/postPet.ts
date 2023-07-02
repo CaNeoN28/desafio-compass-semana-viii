@@ -1,7 +1,7 @@
 import { Operation } from "swagger-jsdoc";
 import { PetPost } from "../../components/schemas";
 
-const petPost: Operation = {
+const postPet: Operation = {
 	tags: ["Pets"],
 	parameters: [{
 		name: "tutorId",
@@ -39,7 +39,9 @@ const petPost: Operation = {
 							message: {
 								type: "string",
 							},
-							data: PetPost,
+							data: {
+								$ref : "#/components/schemas/PetPost"
+							},
 						},
 					},
 				},
@@ -70,4 +72,4 @@ const petPost: Operation = {
 	}
 };
 
-export default petPost
+export default postPet
