@@ -11,7 +11,7 @@ const TutorsPaths: Paths = {
 	"/tutors": {
 		get: getTutors
 	},
-	"/tutors/{id}": {
+	"/tutor/{id}": {
 		put: putTutors,
 		delete: deleteTutors
 	}
