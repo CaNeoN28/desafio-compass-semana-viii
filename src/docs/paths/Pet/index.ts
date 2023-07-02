@@ -1,9 +1,13 @@
 import { Paths } from "swagger-jsdoc";
-import petPost from "./postPet";
+import postPet from "./postPet";
+import putPet from "./putPet";
 
 const PetPaths: Paths = {
 	"/pet/{tutorId}": {
-		post: petPost
+		post: postPet
+	},
+	"/pet/{petId}/tutor/{tutorId}": {
+		put: putPet
 	}
 }
 
