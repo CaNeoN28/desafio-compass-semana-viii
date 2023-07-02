@@ -49,36 +49,10 @@ const putTutors: Operation = {
 			},
 		},
 		401: {
-			description: "Not authenticated",
-			content: {
-				"application/json": {
-					schema: {
-						type: "object",
-						properties: {
-							message: {
-								type: "string",
-								example: "Please provide a valid token!",
-							},
-						},
-					},
-				},
-			},
+			$ref: "#/components/schemas/_401"
 		},
 		403: {
-			description: "Not authorized",
-			content: {
-				"application/json": {
-					schema: {
-						type: "object",
-						properties: {
-							message: {
-								type: "string",
-								example: "You are not allowed to perform this action!",
-							},
-						},
-					},
-				},
-			},
+			$ref: "#/components/schemas/_403"
 		},
 		404: {
 			description: "Not found",
