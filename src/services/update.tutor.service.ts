@@ -37,18 +37,6 @@ class UpdateTutor {
 			validatedData.name = name;
 		}
 
-		if (!data.password) validationErrors.push("Password is required");
-		else {
-			const password = data.password;
-
-			if (!password.match(password_match))
-				validationErrors.push(
-					"The password should contain at least 8 characters, a number, an uppercase letter and a lowercase letter"
-				);
-
-			validatedData.password = password;
-		}
-
 		if (!data.phone) validationErrors.push("Phone is required");
 		else {
 			const phone = data.phone;
@@ -73,12 +61,23 @@ class UpdateTutor {
 			validatedData.zip_code = zip_code;
 		}
 
+		if (data.password) {
+			const password = data.password;
+
+			if (!password.match(password_match))
+				validationErrors.push(
+					"The password should contain at least 8 characters, a number, an uppercase letter and a lowercase letter"
+				);
+
+			validatedData.password = password;
+		}
+
 		if (validationErrors.length > 0) {
 			const message = validationErrors.join("; ");
 			throw new ValidationError(message, data);
 		}
 
-		validatedData._id = data._id
+		validatedData._id = data._id;
 
 		const tutor = TutorRepository.update(validatedData);
 
@@ -86,4 +85,4 @@ class UpdateTutor {
 	};
 }
 
-export default UpdateTutor
+export default UpdateTutor;

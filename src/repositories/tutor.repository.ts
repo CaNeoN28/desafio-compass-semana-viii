@@ -29,7 +29,6 @@ class TutorRepository {
 
 	static update = async function (data: ITutor) {
 		const id = data._id
-
 		if(!id)
 			throw {status: StatusCodes.BAD_REQUEST, message: "Please provide a valid id"}
 
@@ -40,7 +39,7 @@ class TutorRepository {
 
 		const emailAlreadyInUse = await TutorModel.findOne({
 			email: data.email,
-			_id: { $ne: data._id },
+			_id: { $ne: id },
 		});
 
 		if (emailAlreadyInUse) {

@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 export default interface ITutor {
   _id?: string,
 	name: string;
-  password: string;
+  password?: string;
   phone: string;
   email: string;
   date_of_birth: string;

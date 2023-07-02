@@ -51,6 +51,8 @@ class TutorControler {
 	put: RequestHandler = async function (req, res, next) {
 		try {
 			const id = req.params.id;
+			const user = req.user;
+
 			const {
 				name,
 				date_of_birth,
@@ -65,15 +67,17 @@ class TutorControler {
 				date_of_birth,
 				email,
 				name,
-				password,
 				pets,
 				phone,
 				zip_code,
 			};
 
-			const data = await UpdateTutor.update({...tutorData, _id: id})
+			if(id === user?.id)
+				tutorData.password = password
 
-			res.status(StatusCodes.OK).send(data)
+			const data = await UpdateTutor.update({ ...tutorData, _id: id });
+
+			res.status(StatusCodes.OK).send(data);
 		} catch (err) {
 			next(err);
 		}
