@@ -6,4 +6,6 @@ const petRouter = express.Router();
 
 petRouter.post("/:tutorId", authMiddleware, PetController.post)
 
+petRouter.route("/:petId/tutor/:tutorId").put(authMiddleware, PetController.update)
+
 export default petRouter;
