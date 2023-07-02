@@ -16,6 +16,19 @@ const deleteTutors: Operation = {
 		204: {
 			description: "No content"
 		},
+		400: {
+			description: "Bad request",
+			content: {
+				"application/json": {
+					schema: {
+						type: "object",
+						properties: {
+							message: { type: "string", example: "Please provide a valid Id!" }
+						},
+					},
+				},
+			},
+		},
 		401: {
 			description: "Not authenticated",
 			content: {
