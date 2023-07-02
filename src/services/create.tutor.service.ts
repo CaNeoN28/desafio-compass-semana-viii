@@ -1,11 +1,11 @@
 import UniqueFieldError from "../errors/UniqueFieldError";
 import ValidationError from "../errors/ValidationError";
 import TutorModel from "../models/Tutor.model";
-import UserRepository from "../repositories/tutor.repository";
+import TutorRepository from "../repositories/tutor.repository";
 import ITutor from "../types/ITutor";
 import { password_match } from "../types/Matches";
 
-class CreateUser {
+class CreateTutor {
   static handle = async function (data: ITutor) {
     const validatedData: any = {};
     const validationErrors = [];
@@ -87,10 +87,10 @@ class CreateUser {
       throw new UniqueFieldError(message, data);
     }
 
-    const tutor = UserRepository.create(validatedData)
+    const tutor = TutorRepository.create(validatedData)
 
     return tutor
   };
 }
 
-export default CreateUser;
+export default CreateTutor;
