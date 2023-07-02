@@ -6,12 +6,13 @@ const tutorRouter = express.Router();
 const controller = new TutorControler();
 
 tutorRouter
-	.route("/")
-	.post(controller.post)
-	.get(authMiddleware, controller.get);
+	.post("/tutor", controller.post)
 
 tutorRouter
-	.route("/:id")
+	.get("/tutors", authMiddleware, controller.get);
+
+tutorRouter
+	.route("/tutor/:id")
 	.put(authMiddleware, controller.put)
 	.delete(authMiddleware, controller.delete);
 

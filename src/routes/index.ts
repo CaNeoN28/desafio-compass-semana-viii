@@ -5,9 +5,8 @@ import testRouter from "./auth.test.routes";
 
 const appRouter = express.Router();
 
-appRouter.use("/tutors", tutorRouter);
+appRouter.use("/", tutorRouter);
 appRouter.use("/auth", authRouter);
-appRouter.use("/", testRouter)
 
 appRouter.use("/", (req, res) => {
 	res.redirect("/api/v1/docs");
