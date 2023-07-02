@@ -50,7 +50,6 @@ class PetRepository {
 			(pet) => pet.toString() === petId
 		);
 
-		console.log(petBelongsToTutor)
 		if (!petBelongsToTutor)
 			throw { status: StatusCodes.NOT_FOUND, message: "Pet not found!" };
 
