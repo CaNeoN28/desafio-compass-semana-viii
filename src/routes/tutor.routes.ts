@@ -5,8 +5,14 @@ import authMiddleware from "../middlewares/authMiddleware";
 const tutorRouter = express.Router();
 const controller = new TutorControler();
 
-tutorRouter.route("/").post(controller.post).get(authMiddleware ,controller.get);
+tutorRouter
+	.route("/")
+	.post(controller.post)
+	.get(authMiddleware, controller.get);
 
-tutorRouter.route("/:id").put(authMiddleware, controller.put)
+tutorRouter
+	.route("/:id")
+	.put(authMiddleware, controller.put)
+	.delete(authMiddleware, controller.delete);
 
 export default tutorRouter;

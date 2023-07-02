@@ -73,15 +73,25 @@ class TutorControler {
 				zip_code,
 			};
 
-			if(id === user?.id)
-				tutorData.password = password
+			if (id === user?.id) tutorData.password = password;
 
-			if(user.role !== 'admin' && user.id !== id)
-				throw new UnauthorizedError("You are not allowed to perform this action!")
+			if (user.role !== "admin" && user.id !== id)
+				throw new UnauthorizedError(
+					"You are not allowed to perform this action!"
+				);
 
 			const data = await UpdateTutor.update({ ...tutorData, _id: id });
 
 			res.status(StatusCodes.OK).send(data);
+		} catch (err) {
+			next(err);
+		}
+	};
+
+	delete: RequestHandler = async function (req, res, next) {
+		try {
+			const id = req.params.id
+			res.send("Test" + id)
 		} catch (err) {
 			next(err);
 		}

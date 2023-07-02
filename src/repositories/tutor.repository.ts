@@ -58,6 +58,10 @@ class TutorRepository {
 
 		return newTutor
 	}
+
+	static remove = async function (id: string) {
+		
+	}
 }
 
 export default TutorRepository;
