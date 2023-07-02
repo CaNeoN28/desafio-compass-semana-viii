@@ -1,12 +1,23 @@
+import mongoose from "mongoose";
 import ValidationError from "../errors/ValidationError";
 import TutorRepository from "../repositories/tutor.repository";
 import ITutor from "../types/ITutor";
 import { password_match } from "../types/Matches";
+import { StatusCodes } from "http-status-codes";
 
 class UpdateTutor {
 	static update = async function (data: ITutor) {
 		const validatedData: any = {};
 		const validationErrors = [];
+
+		const id = data._id!
+		const isIdValid = mongoose.Types.ObjectId.isValid(id);
+
+		if (!isIdValid)
+			throw {
+				status: StatusCodes.BAD_REQUEST,
+				message: "Please provide a valid id",
+			};
 
 		if (!data.date_of_birth) validationErrors.push("Date of birth is required");
 		else {
@@ -77,7 +88,7 @@ class UpdateTutor {
 			throw new ValidationError(message, data);
 		}
 
-		validatedData._id = data._id;
+		validatedData._id = id;
 
 		const tutor = TutorRepository.update(validatedData);
 

@@ -33,13 +33,6 @@ class TutorRepository {
 	static update = async function (data: ITutor) {
 		const id = data._id!;
 
-		const isIdValid = mongoose.Types.ObjectId.isValid(id);
-		if (!isIdValid)
-			throw {
-				status: StatusCodes.BAD_REQUEST,
-				message: "Please provide a valid id",
-			};
-
 		const tutor = await TutorModel.findById(id);
 
 		if (!tutor)
@@ -79,14 +72,6 @@ class TutorRepository {
 	};
 
 	static remove = async function (id: string) {
-		const isIdValid = mongoose.Types.ObjectId.isValid(id);
-
-		if (!isIdValid)
-			throw {
-				status: StatusCodes.BAD_REQUEST,
-				message: "Please provide a valid id",
-			};
-
 		const tutor = await TutorModel.findById(id);
 
 		if(!tutor)
