@@ -8,5 +8,5 @@ export default interface ITutor {
   email: string;
   date_of_birth: string;
   zip_code: string;
-  pets: mongoose.Types.ObjectId[];
+  pets: {prototype: mongoose.Types.ObjectId}[];
 }
