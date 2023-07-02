@@ -39,6 +39,27 @@ class PetRepository {
 
 		return pet;
 	};
+
+	static delete = async function (tutorId: string, petId: string) {
+		const tutor = await TutorModel.findById(tutorId);
+
+		if (!tutor)
+			throw { status: StatusCodes.NOT_FOUND, message: "Tutor not found!" };
+
+		const petBelongsToTutor = tutor.pets.find(
+			(pet) => pet.toString() === petId
+		);
+
+		console.log(petBelongsToTutor)
+		if (!petBelongsToTutor)
+			throw { status: StatusCodes.NOT_FOUND, message: "Pet not found!" };
+
+		await PetModel.findByIdAndDelete(petId)
+
+		tutor.pets = tutor.pets.filter(petId => petId !== petId)
+
+		await tutor.save()
+	}
 }
 
 export default PetRepository;
