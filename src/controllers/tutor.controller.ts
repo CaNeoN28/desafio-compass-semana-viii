@@ -91,11 +91,17 @@ class TutorControler {
 
 	delete: RequestHandler = async function (req, res, next) {
 		try {
-			const id = req.params.id
-			
-			await DeleteTutor.delete(id)
+			const id = req.params.id;
+			const user = req.user!;
 
-			res.status(StatusCodes.NO_CONTENT).send()
+			if (user.role !== "admin" && user.id !== id)
+				throw new UnauthorizedError(
+					"You are not allowed to perform this action!"
+				);
+				
+			await DeleteTutor.delete(id);
+
+			res.status(StatusCodes.NO_CONTENT).send();
 		} catch (err) {
 			next(err);
 		}
