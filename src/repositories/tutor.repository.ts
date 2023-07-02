@@ -22,7 +22,7 @@ class TutorRepository {
 		return response;
 	};
 	static list = async function () {
-		const tutors = await TutorModel.find().select({ password: false });
+		const tutors = await TutorModel.find().select({ password: false }).populate("pets");
 
 		if (tutors.length === 0)
 			throw { status: StatusCodes.NOT_FOUND, message: "No tutors found!" };
@@ -69,21 +69,6 @@ class TutorRepository {
 		});
 
 		return newTutor;
-	};
-
-	static addPet = async function (
-		tutorId: string,
-		petId: string
-	) {
-		const tutor = await TutorModel.findById(tutorId);
-
-		if (!tutor)
-			throw {
-				status: StatusCodes.NOT_FOUND,
-				message: "Tutor not found",
-			};
-
-		await tutor.updateOne({pets: [...tutor.pets, petId]})
 	};
 
 	static remove = async function (id: string) {
