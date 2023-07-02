@@ -2,7 +2,7 @@ import { StatusCodes } from "http-status-codes";
 import TutorModel from "../models/Tutor.model";
 import ITutor from "../types/ITutor";
 import UniqueFieldError from "../errors/UniqueFieldError";
-import mongoose from "mongoose";
+import mongoose, { mongo } from "mongoose";
 
 class TutorRepository {
 	static create = async function (data: any) {
@@ -30,8 +30,10 @@ class TutorRepository {
 	};
 
 	static update = async function (data: ITutor) {
-		const id = data._id;
-		if (!id)
+		const id = data._id!;
+
+		const isIdValid = mongoose.Types.ObjectId.isValid(id);
+		if (!isIdValid)
 			throw {
 				status: StatusCodes.BAD_REQUEST,
 				message: "Please provide a valid id",
@@ -66,7 +68,7 @@ class TutorRepository {
 
 		if (data.zip_code) tutor.zip_code = data.zip_code;
 
-		tutor.save()
+		tutor.save();
 
 		const newTutor = await TutorModel.findById(tutor.id).select({
 			password: false,
@@ -75,7 +77,17 @@ class TutorRepository {
 		return newTutor;
 	};
 
-	static remove = async function (id: string) {};
+	static remove = async function (id: string) {
+		const isIdValid = mongoose.Types.ObjectId.isValid(id);
+
+		if (!isIdValid)
+			throw {
+				status: StatusCodes.BAD_REQUEST,
+				message: "Please provide a valid id",
+			};
+
+		const tutor = await TutorModel.findById(id);
+	};
 }
 
 export default TutorRepository;
