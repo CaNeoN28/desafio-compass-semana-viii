@@ -3,5 +3,5 @@ export default interface IPet {
 	species: string,
 	carry: string,
 	weight: number,
-	date_of_birth: Date | String	
+	date_of_birth: String	
 }
