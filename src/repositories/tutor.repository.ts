@@ -22,7 +22,7 @@ class TutorRepository {
 		return response;
 	};
 	static list = async function () {
-		const tutors = await TutorModel.find().select({ password: false });
+		const tutors = await TutorModel.find().select({ password: false }).populate("pets");
 
 		if (tutors.length === 0)
 			throw { status: StatusCodes.NOT_FOUND, message: "No tutors found!" };
