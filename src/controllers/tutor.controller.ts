@@ -5,6 +5,7 @@ import { StatusCodes } from "http-status-codes";
 import ListTutors from "../services/list.tutor.service";
 import UpdateTutor from "../services/update.tutor.service";
 import UnauthorizedError from "../errors/UnathourizedError";
+import DeleteTutor from "../services/delete.tutor.service";
 
 class TutorControler {
 	post: RequestHandler = async function (req, res, next) {
@@ -91,7 +92,10 @@ class TutorControler {
 	delete: RequestHandler = async function (req, res, next) {
 		try {
 			const id = req.params.id
-			res.send("Test" + id)
+			
+			await DeleteTutor.delete(id)
+
+			res.status(StatusCodes.NO_CONTENT).send()
 		} catch (err) {
 			next(err);
 		}

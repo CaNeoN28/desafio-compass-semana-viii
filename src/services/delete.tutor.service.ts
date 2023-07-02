@@ -12,6 +12,8 @@ class DeleteTutor{
 				message: "Please provide a valid id",
 			};
 
-		TutorRepository.remove(id)
+		await TutorRepository.remove(id)
 	}
 }
+
+export default DeleteTutor
