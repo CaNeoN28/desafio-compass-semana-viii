@@ -7,9 +7,7 @@ class CreatePet{
 	static create = async function (tutorId: string, data: IPet) {
 		const pet = new Pet(data)
 
-		const response = await PetRepository.create(pet)
-
-		await TutorRepository.addPet(tutorId, response.id)
+		const response = await PetRepository.create(tutorId, pet)
 
 		return response
 	}

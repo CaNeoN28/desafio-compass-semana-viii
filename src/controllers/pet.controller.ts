@@ -36,6 +36,10 @@ class PetController {
 			next(err);
 		}
 	};
+
+	static put: RequestHandler = async function (req, res) {
+		
+	}
 }
 
 export default PetController;
