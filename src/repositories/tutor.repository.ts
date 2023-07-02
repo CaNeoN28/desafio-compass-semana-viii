@@ -3,6 +3,7 @@ import TutorModel from "../models/Tutor.model";
 import ITutor from "../types/ITutor";
 import UniqueFieldError from "../errors/UniqueFieldError";
 import mongoose, { mongo } from "mongoose";
+import UnauthorizedError from "../errors/UnathourizedError";
 
 class TutorRepository {
 	static create = async function (data: any) {
@@ -87,6 +88,17 @@ class TutorRepository {
 			};
 
 		const tutor = await TutorModel.findById(id);
+
+		if(!tutor)
+			throw {
+				status: StatusCodes.NOT_FOUND,
+				message: "Tutor not found"
+			}
+
+		if(tutor.pets.length > 0)
+			throw new UnauthorizedError("Can not delete tutor with pets")
+
+		await tutor?.deleteOne()
 	};
 }
 
