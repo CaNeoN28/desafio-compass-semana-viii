@@ -1,12 +1,19 @@
 const PetPost = {
 	type: "object",
 	properties: {
-		name: { type: "string", example: "Lilo" },
-		species: {type : "string", example: "dog"},
-		carry: {type: "string", example: "p"},
-		weight: {type: "number", example: 20},
-		date_of_birth: {type: "string", example: "2020/01/01"}
+		name: { type: "string", required: true },
+		species: { type: "string", required: true },
+		carry: { type: "string", required: true },
+		weight: { type: "number", required: true },
+		date_of_birth: { type: "string", required: true },
+	},
+	example: {
+		name: "Lilo",
+		species: "dog",
+		carry: "p",
+		weight: 20,
+		date_of_birth: "2020/01/01",
 	},
 };
 
-export default PetPost
+export default PetPost;
