@@ -81,7 +81,7 @@ class TutorControler {
 					"You are not allowed to perform this action!"
 				);
 
-			const data = await UpdateTutor.update({ ...tutorData, _id: id });
+			const data = await UpdateTutor.update(id, tutorData);
 
 			res.status(StatusCodes.OK).send(data);
 		} catch (err) {
