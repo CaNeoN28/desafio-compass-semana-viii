@@ -17,6 +17,10 @@ swaggerSetup(app)
 app.use(express.json());
 app.use("/api/v1", appRouter);
 
+app.use("/", (req, res) => {
+	res.status(404).send("Not found")
+})
+
 app.use(errorsMiddleware);
 
 const start = async () => {

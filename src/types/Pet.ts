@@ -38,7 +38,9 @@ class Pet implements IPet {
 		if (!species) validationErrors.push("Pet species is required");
 
 		if (!weight) validationErrors.push("Pet weight is required");
-		else if (weight === 0)
+		else if (isNaN(weight))
+			validationErrors.push("Pet weight should be a valid number")
+		else if (weight >= 0)
 			validationErrors.push("Pet weight should be greater than 0");
 
 		if (validationErrors.length > 0) {
